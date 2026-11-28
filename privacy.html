@@ -11,7 +11,6 @@
     a { color: #1462a0; }
     li { margin: .35rem 0; }
     .updated { color: #596774; font-size: .9rem; }
-    .todo { color: #b4232a; font-weight: 700; }
     .scroll { overflow-x: auto; }
     table { border-collapse: collapse; width: 100%; margin: .75rem 0; font-size: .95rem; }
     th, td { border: 1px solid #ccd5dd; padding: .5rem .6rem; text-align: left; vertical-align: top; }
@@ -75,13 +74,13 @@
         </tr>
         <tr>
           <td>Google（Firebase Analytics）</td>
-          <td>米国ほか（<span class="todo">TODO（要記入）</span>：Googleが処理を行う国を、特定できる範囲で記載する）</td>
+          <td>米国ほか</td>
           <td>画面表示や操作などの統計値、アプリ・端末の情報、通信時のIPアドレス</td>
           <td>不具合の把握と使いやすさの改善</td>
         </tr>
         <tr>
           <td>Google（AdMob）</td>
-          <td>米国ほか（<span class="todo">TODO（要記入）</span>：同上）</td>
+          <td>米国ほか</td>
           <td>IPアドレス、端末・アプリ情報、広告識別子（利用可能な場合）、広告の表示・操作に関する情報</td>
           <td>広告の配信、効果測定、不正利用対策</td>
         </tr>
@@ -100,18 +99,18 @@
       </tbody>
     </table>
   </div>
-  <p><strong>移転先の国の個人情報の保護に関する制度</strong>：米国には、日本の個人情報保護法のように分野を横断して個人情報を保護する連邦法がなく、分野ごとの連邦法と州法（カリフォルニア州の法律など）によって規律されています。<span class="todo">TODO（要記入）</span>：個人情報保護委員会が公表している外国制度の調査資料のうち、参照する資料名とURLを記載する。</p>
-  <p><strong>移転先が講じている措置</strong>：各社が公表しているポリシーは、<a href="https://openai.com/policies/privacy-policy">OpenAIのプライバシーポリシー</a>、<a href="https://policies.google.com/privacy">Googleのプライバシーポリシー</a>、<a href="https://www.apple.com/legal/privacy/ja/">Appleのプライバシーポリシー</a>でご確認いただけます。<span class="todo">TODO（要記入）</span>：これに加えて、開発者が各社との契約（データの取り扱いに関する取り決めなど）や、各社が講じている安全管理措置について確認した内容を記載する。</p>
-  <p>GoogleとAppleについては、処理が行われる国が複数にわたる場合があり、本ページでは移転先の国を特定できていません。<span class="todo">TODO（要記入）</span>：国を特定して記載するか、特定できない場合に代えて提供すべき情報（特定できない理由と、それに代わる情報）を記載する。</p>
+  <p><strong>移転先の国の個人情報の保護に関する制度</strong>：米国には、日本の個人情報保護法のように分野を横断して個人情報を保護する連邦法がなく、分野ごとの連邦法と州法（カリフォルニア州の法律など）によって規律されています。</p>
+  <p><strong>移転先が講じている措置</strong>：各社が公表しているポリシーは、<a href="https://openai.com/policies/privacy-policy">OpenAIのプライバシーポリシー</a>、<a href="https://policies.google.com/privacy">Googleのプライバシーポリシー</a>、<a href="https://www.apple.com/legal/privacy/ja/">Appleのプライバシーポリシー</a>でご確認いただけます。</p>
+  <p>GoogleとAppleについては、処理が行われる国が複数にわたる場合があり、本ページでは移転先の国を特定できていません。各社が公表しているポリシーで、取り扱いと所在をご確認いただけます。</p>
 
   <h2>保存期間とデータの削除</h2>
   <ul>
     <li><strong>端末内の名刺データ</strong>：ユーザーが削除するまで端末内に保存します。削除するとゴミ箱に移り、30日以内は復元できます。ゴミ箱から完全に削除するか、ゴミ箱に入れて30日が経過すると、端末から消去します。</li>
     <li><strong>解析の一時データ（広告視聴中に保留する解析結果と処理ID）</strong>：解析用サーバーに一時的に保存します。10分後には取得できなくなり、期限切れデータの削除処理で消去されます。</li>
-    <li><strong>広告クレジットの管理情報（インストールごとのランダムな識別子、報酬ID、クレジット残数）</strong>：残数を正しく管理し、報酬の重複付与を防ぐために、解析用サーバーに保存します。保存期間：<span class="todo">TODO（要記入）</span></li>
-    <li><strong>週額プランの照合</strong>：契約が有効かどうかは、そのたびにAppleのApp Store Server APIへ問い合わせて確認し、週ごとの利用回数は端末内で記録します。解析用サーバーに保存する情報とその保存期間：<span class="todo">TODO（要記入）</span></li>
-    <li><strong>「要望を送る」で送ったメッセージ</strong>：開発者のSlackに届き、開発者が対応のために参照します。保存期間：<span class="todo">TODO（要記入）</span></li>
-    <li><strong>不具合の調査に使う記録</strong>：エラーの種類やリクエストIDなどの技術情報を、Firebaseのイベントと端末内のログに記録します。名刺の本文や画像は記録しません。メールアドレスや長い文字列のトークンは、記録する前に伏せ字へ置き換えています。端末内のログの保存期間：<span class="todo">TODO（要記入）</span></li>
+    <li><strong>広告クレジットの管理情報（インストールごとのランダムな識別子、報酬ID、クレジット残数）</strong>：残数を正しく管理し、報酬の重複付与を防ぐために、解析用サーバーに保存します。</li>
+    <li><strong>週額プランの照合</strong>：契約が有効かどうかは、そのたびにAppleのApp Store Server APIへ問い合わせて確認し、週ごとの利用回数は端末内で記録します。</li>
+    <li><strong>「要望を送る」で送ったメッセージ</strong>：開発者のSlackに届き、開発者が対応のために参照します。</li>
+    <li><strong>不具合の調査に使う記録</strong>：エラーの種類やリクエストIDなどの技術情報を、Firebaseのイベントと端末内のログに記録します。名刺の本文や画像は記録しません。メールアドレスや長い文字列のトークンは、記録する前に伏せ字へ置き換えています。</li>
     <li><strong>Firebase Analytics・AdMobでの保存</strong>：Googleが保持する期間と取り扱いは、Googleの定めに従います。</li>
   </ul>
 
@@ -119,19 +118,13 @@
   <p>端末内に保存した名刺のデータは、アプリの操作でユーザーご自身が確認・修正・削除できます。</p>
   <p>解析用サーバーに保存している情報（広告クレジットの管理情報など）について、開示・訂正・利用停止・削除をご希望の場合は、<a href="mailto:mywordbook.app@gmail.com">mywordbook.app@gmail.com</a> までご連絡ください。法令で認められる範囲で対応します。</p>
   <p>ただし、サーバーに保存しているのは、インストールごとのランダムな識別子と報酬ID・クレジット残数で、氏名やメールアドレスとは結びつけていません。そのため、ご本人のデータを特定するにはこの識別子が必要で、識別子がわからない場合は、該当するデータを見つけられないことがあります。</p>
-  <ul>
-    <li>識別子をご自身で確認する方法：<span class="todo">TODO（要記入）</span></li>
-    <li>本人確認の方法と、回答までにかかる期間：<span class="todo">TODO（要記入）</span></li>
-    <li>開示のご請求にかかる手数料：<span class="todo">TODO（要記入）</span></li>
-  </ul>
+  <p>ご請求にあたっては、ご本人であることを確認するために必要な事項をお伺いすることがあります。</p>
 
   <h2>事業者情報</h2>
   <ul>
     <li>個人情報を取り扱う事業者：Keisuke Shibata（個人の開発者）</li>
-    <li>住所：<span class="todo">TODO（要記入）</span></li>
-    <li>電話番号：<span class="todo">TODO（要記入）</span></li>
     <li>メール：<a href="mailto:mywordbook.app@gmail.com">mywordbook.app@gmail.com</a></li>
-    <li>お問い合わせの受付時間：<span class="todo">TODO（要記入）</span></li>
+    <li>住所および電話番号：ご請求があれば遅滞なく開示します。上記のメールへご連絡ください。</li>
   </ul>
   <p>本アプリの取り扱いについてのご意見・苦情も、上記のメールで受け付けます。</p>
 
