@@ -28,13 +28,57 @@
 - [ ] 個人情報保護委員会の外国制度調査資料の資料名とURL（米国分）
 - [ ] 各社との契約（データ取扱いの取り決め）と、各社の安全管理措置について確認した内容
 
+## Android版で未記入のまま残している事項（2026-11-29 追記）
+
+`android-privacy.html` / `android-terms.html` を全面的に書き直し、越境移転・委託／提供の整理・
+保存期間・開示請求・準拠法・管轄・返金・特商法表示を追加した。埋められなかったのは次のとおり。
+
+- [ ] **事業者の住所・電話番号・受付時間**（iOS版と同じ扱い。「ご請求があれば遅滞なく開示します」）
+- [ ] **管轄裁判所の具体名**（第13条は「開発者の住所地を管轄する地方裁判所」とだけ書いてある）
+- [ ] **Google Play解約の具体的な期限**
+  「現在の請求期間が終わる前に」「期限と手続はGoogle Playの定めに従う」と書いた。
+  AppleのiOS版は「24時間以上前」と書けるが、Google Playの該当条件を一次情報で確認していないため
+  数字を書かなかった。Google Playヘルプで確認したら差し替える。
+- [ ] **返金の申請先の直リンク**（Google Playヘルプのトップへ張った。払い戻し申請の個別ページURLは未確認）
+- [ ] **開発者による独自の返金の扱い**。いまは「開発者独自の返金制度は設けていません」と書いた。
+  設けるなら両ページを直す。
+- [ ] 広告クレジット残数（`INSTALL#.../ACCOUNT`）のサーバー保存期間。
+  **実装上は期限なし**（`expiresAt` を設定していないので DynamoDB TTL の対象外）。
+  ページには「有効期限を設けていません」と事実として書いた。方針として期限を設けるなら要変更。
+- [ ] アクセスコード／利用トークンの記録の保存期間。
+  **実装上は期限なし**（無効化すると `enabled=false` になるが行は残る）。
+  ページには「無効にするまで保存します」と書いた。削除まで行うなら実装とページの両方を直す。
+- [ ] 「要望を送る」で届いたメッセージの保存期間（Slack側の保持設定）
+- [ ] 解析失敗のSlack通知の保持期間（同じSlackワークスペースの設定に従う）
+- [ ] ユーザーが自分のインストール識別子を確認する方法（アプリに表示する場所を作るかどうか）
+- [ ] 開示請求の手数料と、回答までの期間
+- [ ] Firebase Analytics / AdMob / Google Play Developer API の処理が行われる国（いまは「米国ほか」）
+- [ ] 個人情報保護委員会の外国制度調査資料の資料名とURL（米国分）
+- [ ] 各社との契約（データ取扱いの取り決め）と、各社の安全管理措置について確認した内容
+
+### Android版で**書けた**事実（iOS版の未記入項目と差がある箇所）
+
+次はAndroidのコードで確認できたので、ページに数字を書いた。iOS版の該当箇所も同じ値のはずなので、
+iOS版ページを次に直すときに流用できる。
+
+- 広告視聴中に保留する解析結果と引換券：**10分**（`premium_ledger.save_prepared_result`、`expiresAt = now + 600`）
+- 成功した解析結果と処理ID：**24時間**（`premium_ledger.save_result`、`expiresAt = now + 86400`）
+- 報酬IDの重複付与防止記録：**2年**（`premium_ledger.grant_reward`、`expiresAt = now + 2*365*86400`）
+- TTLは `meishi-infra/prod/terraform/main.tf` の `ttl { attribute_name = "expiresAt" }` で有効。
+- 購入トークンは**サーバーに保存していない**（`android_subscription.py` が毎回Googleへ中継するだけ）。
+
 ## 別件として残っているもの
 
-- [ ] **Android版ページが同じ穴を抱えている**（`android-privacy.html` / `android-terms.html`）。
-  越境移転・委託／提供の整理・準拠法・管轄・特商法表示がない。
-  ML Kit・アクセスコード・Google Play Developer API と構成が違うので、iOS版の文章は流用できない。
-- [ ] iOS版に利用状況分析のオプトアウトの記載がない。Android版にはある。
-  iOSに同じスイッチがあるなら書く。無いなら実装差として把握しておく。
+- [x] ~~Android版ページが同じ穴を抱えている~~ → 2026-11-29に全面改稿して解消。
+- [x] ~~iOS版に利用状況分析のオプトアウトの記載がない。Android版にはある。~~
+  Androidの実装を確認した。**スイッチは実在する**：
+  `MainActivity.kt` の「利用状況の分析に協力」→ `AppTelemetry.setEnabled()` →
+  `FirebaseAnalytics.setAnalyticsCollectionEnabled()`。既定はオン、`SharedPreferences("privacy")` に永続化。
+  あわせて `AndroidManifest.xml` で広告ID収集（`google_analytics_adid_collection_enabled=false`）と
+  画面名の自動記録を無効にしている。これもAndroid版ページに書いた。
+- [ ] **iOS側に同じスイッチがあるか未確認。** 無ければ実装差。
+  iOS版 `privacy.html` には今もオプトアウトの記載がない。実装を確認して、
+  あるなら書く／無いなら実装するかを決める。
 - [ ] LinkedIn / Facebook ボタンを既定で非表示にする改修に合わせて、privacy.html の該当記述を見直す。
 - [ ] `terms.html` の「iOS 17.0以降」は `index.html` の構造化データ由来。実際のデプロイメントターゲットと要照合。
 - [ ] `index.html` フッターの更新日が 2026年10月18日 のまま。
